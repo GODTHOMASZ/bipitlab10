@@ -1,0 +1,29 @@
+﻿@model Order
+@{
+    ViewBag.Title = "Order_Edit";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.Id)
+        <p>
+            @Html.LabelFor(model => model.Сlient.FIO, "ФИО")
+            <br />
+            @Html.DropDownListFor(model => model.Id_client, ViewBag.Сlient as SelectList)
+            <br />
+            @Html.LabelFor(model => model.Service.Name_Service, "Название")
+            <br />
+            @Html.DropDownListFor(model => model.Id_service, ViewBag.Service as SelectList)
+            <br />
+            @Html.LabelFor(model => model.Date_completion, "Дата выполнения")
+            <br />
+            @Html.EditorFor(model => model.Date_completion)
+            <br />
+            <br />
+        </p>
+        <p><input type="submit" value="Редактировать" /></p>
+    </fieldset>
+}
+
+

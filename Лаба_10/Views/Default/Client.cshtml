@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Client";
+}
+<h2>Клиенты</h2>
+<div>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>ФИО</td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td></td>
+                <td></td>
+            }
+        </tr>
+        @foreach (var s in ViewBag.Client)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.FIO</td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td> @Html.ActionLink("Редактировать", "Client_Edit", new { Id = s.Id }) </td>
+                    <td>@Html.ActionLink("Удалить", "Client_Delete", new { Id = s.Id }) </td>
+                }
+            </tr>
+        }
+    </table>
+    <br />
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Добавить", "Client_Add")
+    }
+</div>
+

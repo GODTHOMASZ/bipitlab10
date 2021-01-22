@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Service";
+}
+
+<h2>Услуги</h2>
+<div>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Название</td>
+            <td>Цена</td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td></td>
+                <td></td>
+            }
+        </tr>
+        @foreach (var s in ViewBag.Service)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name_Service</td>
+                <td>@s.Cost_Service</td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td> @Html.ActionLink("Редактировать", "Service_Edit", new { Id = s.Id }) </td>
+                    <td>@Html.ActionLink("Удалить", "Service_Delete", new { Id = s.Id }) </td>
+                }
+            </tr>
+        }
+    </table>
+    <br />
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Добавить", "Service_Add")
+    }
+</div>
+

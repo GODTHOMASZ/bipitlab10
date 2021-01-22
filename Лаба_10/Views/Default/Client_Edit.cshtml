@@ -1,0 +1,19 @@
+﻿@model Client
+@{
+    ViewBag.Title = "Client_Edit";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.Id)
+        <p>
+            @Html.LabelFor(model => model.FIO, "ФИО")
+            <br />
+            @Html.EditorFor(model => model.FIO)
+            <br />
+        </p>
+        <p><input type="submit" value="Редактировать" /></p>
+    </fieldset>
+}
+

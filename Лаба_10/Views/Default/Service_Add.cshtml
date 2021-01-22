@@ -1,0 +1,21 @@
+﻿@model Service
+@{
+    ViewBag.Title = "Service_Add";
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        @Html.LabelFor(model => model.Name_Service, "Название")
+        <br />
+        @Html.EditorFor(model => model.Name_Service)
+        <br />
+        @Html.LabelFor(model => model.Cost_Service, "Цена")
+        <br />
+        @Html.EditorFor(model => model.Cost_Service)
+        <br />
+        <br />
+        <input type="submit" value="Добавить" />
+    </fieldset>
+}
+

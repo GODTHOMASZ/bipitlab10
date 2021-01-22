@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+}
+
+<h2>Заказы</h2>
+<div>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>ФИО</td>
+            <td>Название услуги</td>
+            <td>Дата выполнения</td>
+            <td>Цена</td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td></td>
+                <td></td>
+            }
+        </tr>
+        @foreach (var a in ViewBag.Order)
+        {
+            <tr>
+                <td>@a.Id</td>
+                <td>@a.Сlient.FIO</td>
+                <td>@a.Service.Name_Service</td>
+                <td>@a.Date_completion</td>
+                <td>@a.Service.Cost_Service</td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td> @Html.ActionLink("Редактировать", "Order_Edit", new { Id = a.Id }) </td>
+                    <td>@Html.ActionLink("Удалить", "Order_Delete", new { Id = a.Id }) </td>
+                }
+            </tr>
+        }
+    </table>
+    <br />
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Добавить", "Order_Add")
+    }
+</div>
+
+
+

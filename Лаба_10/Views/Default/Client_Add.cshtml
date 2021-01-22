@@ -1,0 +1,17 @@
+﻿@model Client
+@{
+    ViewBag.Title = "Client_Add";
+}
+
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        @Html.LabelFor(model => model.FIO, "ФИО")
+        <br />
+        @Html.EditorFor(model => model.FIO)
+        <br />
+        <input type="submit" value="Добавить" />
+    </fieldset>
+}
+
